@@ -53,16 +53,7 @@ function handleListClick(event) {
     document.body.removeChild(bookPreview);
   });
   
-  if (active) {
-    const { author, description, image, published, title } = active;
-    document.querySelector('[data-list-active]').open = true;
-    document.querySelector('[data-list-blur]').src = image;
-    document.querySelector('[data-list-image]').src = image;
-    document.querySelector('[data-list-title]').innerText = title;
-    document.querySelector('[data-list-subtitle]').innerText =
-      `${authors[author]} (${new Date(published).getFullYear()})`;
-    document.querySelector('[data-list-description]').innerText = description;
-  }
+
 }
 
 

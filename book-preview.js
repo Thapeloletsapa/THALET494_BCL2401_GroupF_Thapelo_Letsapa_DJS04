@@ -24,7 +24,7 @@ class BookPreview extends HTMLElement {
       
       `;
   }
-  connectedCallback() {
+    connectedCallback() {
     this.shadowRoot
       .querySelector('[data-list-close]')
       .addEventListener('click', () => {
