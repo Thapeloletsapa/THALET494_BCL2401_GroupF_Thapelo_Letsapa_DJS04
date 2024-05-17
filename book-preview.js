@@ -24,3 +24,27 @@ class BookPreview extends HTMLElement {
       
       `;
   }
+  connectedCallback() {
+    this.shadowRoot
+      .querySelector('[data-list-close]')
+      .addEventListener('click', () => {
+        this.dispatchEvent(new CustomEvent('close'));
+      });
+  }
+
+  /**
+   * @param {{ author: any; description: any; image: any; published: any; title: any; }} book
+   */
+  set book(book) {
+    const { author, description, image, published, title } = book;
+    this.shadowRoot.querySelector('[data-list-blur]').src = image;
+    this.shadowRoot.querySelector('[data-list-image]').src = image;
+    this.shadowRoot.querySelector('[data-list-title]').innerText = title;
+    this.shadowRoot.querySelector('[data-list-subtitle]').innerText =
+      `${authors[author]} (${new Date(published).getFullYear()})`;
+    this.shadowRoot.querySelector('[data-list-description]').innerText =
+      description;
+  }
+}
+
+customElements.define('book-preview', BookPreview);
